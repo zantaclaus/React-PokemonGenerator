@@ -20,17 +20,17 @@ const Card = ({ img, data, isLoading }) => {
   const { name, types, id, stats } = data;
 
   return (
-    <div className="relative ">
+    <div className="relative">
       <div className="Circle w-32 h-32 bg-white backdrop-fliter backdrop-blur-sm rounded-full max-w-lg shadow-lg shadow-purple-500/40 absolute inset-y-1/4 -left-16"></div>
       <div className="Circle w-40 h-40 bg-white backdrop-fliter backdrop-blur-sm rounded-full max-w-lg shadow-lg shadow-rose-500/40 absolute inset-y-3/4 -right-16"></div>
-      <div className="w-fit h-fit py-3 px-5 bg-white/50 backdrop-fillter backdrop-blur-lg rounded-xl relative">
+      <div className="w-fit h-fit py-3 px-5 bg-white/50 backdrop-fillter backdrop-blur-lg rounded-xl relative shadow-lg shadow-indigo-500/40">
         <div className="Circle w-12 h-12 bg-white backdrop-fliter backdrop-blur-sm rounded-full max-w-lg shadow-lg shadow-indigo-500/40 absolute -top-7 left-12 "></div>
         {isLoading ? (
           <Spinner />
         ) : (
           <React.Fragment>
-            <img src={img} alt="" className="w-40 mx-auto mt-3" />
-            <h1 className="text-center font-bold text-xl mt-2 capitalize">
+            <img src={img} alt="" className="w-40 mx-auto mt-3 lg:w-64" />
+            <h1 className="text-center font-bold text-xl mt-2 capitalize lg:text-2xl ">
               {name}
             </h1>
             <div className="absolute top-4 right-4 font-bold bg-white px-2 py-1 rounded-full shadow-md shadow-purple-500/50 ">
@@ -82,7 +82,7 @@ const Type = ({ type }) => {
 
   return (
     <div
-      className="w-fit rounded-3xl px-3 py-1 font-semibold text-white"
+      className="w-fit rounded-3xl px-3 py-1 font-semibold text-white lg:text-lg"
       style={{ backgroundColor: backgrounds[type] }}
     >
       {type}
@@ -92,14 +92,14 @@ const Type = ({ type }) => {
 
 const Stats = ({ banner, stat }) => (
   <div className="mx-2">
-    <div className="text-center font-bold">{stat}</div>
+    <div className="text-center font-bold lg:text-lg">{stat}</div>
     <div className="text-center font-semibold text-gray-500">{banner}</div>
   </div>
 );
 
 const GenerateBtn = ({ handleGenerate }) => (
   <div
-    className="button px-4 py-2 mt-3 w-fit font-semibold text-white ounded cursor-pointe relative backdrop-fliter backdrop-blur-sm bg-white/30 hover:bg-white/70 cursor-pointer"
+    className="button px-4 py-2 mt-3 w-fit font-semibold text-white ounded cursor-pointe relative backdrop-fliter backdrop-blur-sm bg-white/30 hover:bg-white/70 cursor-pointer shadow-lg shadow-rose-500/40"
     onClick={handleGenerate}
   >
     Generate
@@ -140,7 +140,7 @@ function App() {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center relative">
+    <div className="w-screen h-screen flex flex-col justify-center items-center relative">
       <Background />
       <Card img={img} data={pokeData} isLoading={isLoading} />
       <GenerateBtn handleGenerate={handleGenerate} />
